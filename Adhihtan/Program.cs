@@ -9,6 +9,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddScoped<BrowserStorage>();
+builder.Services.AddScoped<UiText>();
 builder.Services.AddScoped<AppStateService>();
 
 await builder.Build().RunAsync();

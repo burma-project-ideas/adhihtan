@@ -1,14 +1,15 @@
+@inject UiText L
 @page "/"
 @inject AppStateService AppState
 
-<PageTitle>အဓိဋ္ဌာန်</PageTitle>
+<PageTitle>@L.T("အဓိဋ္ဌာန်")</PageTitle>
 
 <section class="page home-page">
     <header class="page-header home-header">
         <div>
-            <p class="eyebrow">မင်္ဂလာပါ</p>
-            <h1>ယနေ့ အဓိဋ္ဌာန်</h1>
-            <p class="muted">@BurmeseDateFormatter.Long(DateTime.Today)</p>
+            <p class="eyebrow">@L.T("မင်္ဂလာပါ")</p>
+            <h1>@L.T("ယနေ့ အဓိဋ္ဌာန်")</h1>
+            <p class="muted">@L.Date(DateTime.Today)</p>
         </div>
         <div class="header-emblem" aria-hidden="true">
             <span></span>
@@ -20,10 +21,10 @@
     {
         <article class="glass-card empty-state">
             <div class="empty-state-icon"><AppIcon Name="calendar" /></div>
-            <h2>အဓိဋ္ဌာန် မစတင်ရသေးပါ</h2>
-            <p>လိုက်နာမည့် အဓိဋ္ဌာန်အမျိုးအစားနှင့် ပုတီးစိပ်အစီအစဉ်ကို ရွေးချယ်ပါ။</p>
+            <h2>@L.T("အဓိဋ္ဌာန် မစတင်ရသေးပါ")</h2>
+            <p>@L.T("လိုက်နာမည့် အဓိဋ္ဌာန်အမျိုးအစားနှင့် ပုတီးစိပ်အစီအစဉ်ကို ရွေးချယ်ပါ။")</p>
             <NavLink class="primary-button" href="setup">
-                <AppIcon Name="setup" /> အစီအစဉ် စတင်မည်
+                <AppIcon Name="setup" /> @L.T("အစီအစဉ် စတင်မည်")
             </NavLink>
         </article>
     }
@@ -31,9 +32,9 @@
     {
         <article class="glass-card empty-state">
             <div class="empty-state-icon success">✓</div>
-            <h2>ယနေ့အတွက် အစီအစဉ်မရှိပါ</h2>
-            <p>သတ်မှတ်ထားသော အဓိဋ္ဌာန်ကာလ ပြီးဆုံးသွားပြီ သို့မဟုတ် မစတင်သေးပါ။</p>
-            <NavLink class="primary-button" href="setup">အစီအစဉ်အသစ် ရွေးမည်</NavLink>
+            <h2>@L.T("ယနေ့အတွက် အစီအစဉ်မရှိပါ")</h2>
+            <p>@L.T("သတ်မှတ်ထားသော အဓိဋ္ဌာန်ကာလ ပြီးဆုံးသွားပြီ သို့မဟုတ် မစတင်သေးပါ။")</p>
+            <NavLink class="primary-button" href="setup">@L.T("အစီအစဉ်အသစ် ရွေးမည်")</NavLink>
         </article>
     }
     else
@@ -41,15 +42,15 @@
         <article class="glass-card hero-card">
             <div class="hero-title-row">
                 <span class="chip">@CategoryLabel</span>
-                <button class="icon-button" type="button" aria-label="ယနေ့အဓိဋ္ဌာန်ကို မျှဝေမည်" title="မျှဝေမည်" @onclick="AppState.ShareTodayAsync"><AppIcon Name="share" /></button>
+                <button class="icon-button" type="button" aria-label="@L.T("ယနေ့အဓိဋ္ဌာန်ကို မျှဝေမည်")" title="@L.T("မျှဝေမည်")" @onclick="AppState.ShareTodayAsync"><AppIcon Name="share" /></button>
             </div>
             <h2>@TodayEntry.SpellName</h2>
-            <p class="muted">@TodayEntry.SpellCount ပတ် × @AppStateService.ToMyanmarNumber(AppState.State.Plan.Multiplier)</p>
+            <p class="muted">@L.Digits(TodayEntry.SpellCount) @(L.IsEnglish ? "rounds" : "ပတ်") × @L.Number(AppState.State.Plan.Multiplier)</p>
 
-            <div class="dashboard-progress-ring" style="--daily-progress: @(AppState.TodayProgress * 100)%" aria-hidden="true"><span>@AppStateService.ToMyanmarNumber((int)Math.Round(AppState.TodayProgress * 100))<small>%</small></span></div>
+            <div class="dashboard-progress-ring" style="--daily-progress: @(AppState.TodayProgress * 100)%" aria-hidden="true"><span>@L.Number((int)Math.Round(AppState.TodayProgress * 100))<small>%</small></span></div>
             <div class="hero-count-row">
-                <strong>@AppStateService.ToMyanmarNumber(AppState.TodayCount)</strong>
-                <span>/ @AppStateService.ToMyanmarNumber(AppState.TodayTarget) ထိချက်</span>
+                <strong>@L.Number(AppState.TodayCount)</strong>
+                <span>/ @L.Number(AppState.TodayTarget) @(L.IsEnglish ? "counts" : "ထိချက်")</span>
             </div>
             <div class="bead-rhythm" aria-hidden="true">
                 @foreach (var bead in Enumerable.Range(0, 9))
@@ -57,37 +58,37 @@
                     <i class="@(AppState.TodayProgress * 9 > bead ? "filled" : null)"></i>
                 }
             </div>
-            <div class="progress-track" role="progressbar" aria-label="ယနေ့ ပုတီးစိပ်ပြီးစီးမှု" aria-valuenow="@AppState.TodayCount" aria-valuemin="0" aria-valuemax="@AppState.TodayTarget" aria-valuetext="@ProgressValueText">
+            <div class="progress-track" role="progressbar" aria-label="@L.T("ယနေ့ ပုတီးစိပ်ပြီးစီးမှု")" aria-valuenow="@AppState.TodayCount" aria-valuemin="0" aria-valuemax="@AppState.TodayTarget" aria-valuetext="@ProgressValueText">
                 <span style="width: @(AppState.TodayProgress * 100)%"></span>
             </div>
             <div class="hero-footer-row">
-                <span>@(TodayEntry.IsDone ? "ယနေ့အဓိဋ္ဌာန် ပြီးစီးပါပြီ" : "ပုတီးစိပ်ရန် ကျန်ရှိသေးသည်")</span>
-                <strong>@AppStateService.ToMyanmarNumber((int)Math.Round(AppState.TodayProgress * 100))%</strong>
+                <span>@(TodayEntry.IsDone ? L.T("ယနေ့အဓိဋ္ဌာန် ပြီးစီးပါပြီ") : L.T("ပုတီးစိပ်ရန် ကျန်ရှိသေးသည်"))</span>
+                <strong>@L.Number((int)Math.Round(AppState.TodayProgress * 100))%</strong>
             </div>
         </article>
 
         <div class="summary-grid">
             <article class="glass-card metric-card">
-                <span>ပြီးစီးရက်</span>
-                <strong>@AppStateService.ToMyanmarNumber(CompletedDays)</strong>
+                <span>@L.T("ပြီးစီးရက်")</span>
+                <strong>@L.Number(CompletedDays)</strong>
             </article>
             <article class="glass-card metric-card">
-                <span>စုစုပေါင်းရက်</span>
-                <strong>@AppStateService.ToMyanmarNumber(TotalDays)</strong>
+                <span>@L.T("စုစုပေါင်းရက်")</span>
+                <strong>@L.Number(TotalDays)</strong>
             </article>
             <article class="glass-card metric-card">
-                <span>ပုတီးစုစုပေါင်း</span>
-                <strong>@AppStateService.ToMyanmarNumber(TotalCount)</strong>
+                <span>@L.T("ပုတီးစုစုပေါင်း")</span>
+                <strong>@L.Number(TotalCount)</strong>
             </article>
         </div>
 
         <section class="section-block">
             <div class="section-heading">
                 <div>
-                    <p class="eyebrow">ယနေ့အစီအစဉ်</p>
-                    <h2>ပုတီးစိပ်ရန်</h2>
+                    <p class="eyebrow">@L.T("ယနေ့အစီအစဉ်")</p>
+                    <h2>@L.T("ပုတီးစိပ်ရန်")</h2>
                 </div>
-                <NavLink class="text-button" href="counter">ပုတီးစိပ်မည်</NavLink>
+                <NavLink class="text-button" href="counter">@L.T("ပုတီးစိပ်မည်")</NavLink>
             </div>
             <NavLink class="glass-card today-card" href="counter" aria-label="@(TodayEntry.SpellName + " ပုတီးစိပ်ရန်")">
                 <div class="today-card-header">
@@ -95,10 +96,10 @@
                     <span>@TodayEntry.MmDay</span>
                 </div>
                 <h3>@TodayEntry.SpellName</h3>
-                <strong>@TodayEntry.SpellCount ပတ်</strong>
+                <strong>@L.Digits(TodayEntry.SpellCount) @(L.IsEnglish ? "rounds" : "ပတ်")</strong>
                 @if (TodayEntry.IsVegetarian)
                 {
-                    <small class="leaf-note">● သက်သတ်လွတ်နေ့</small>
+                    <small class="leaf-note">@L.T("● သက်သတ်လွတ်နေ့")</small>
                 }
             </NavLink>
         </section>
@@ -106,17 +107,17 @@
         <section class="section-block">
             <div class="section-heading">
                 <div>
-                    <p class="eyebrow">မှတ်တမ်း</p>
-                    <h2>လတ်တလောပြီးစီးမှု</h2>
+                    <p class="eyebrow">@L.T("မှတ်တမ်း")</p>
+                    <h2>@L.T("လတ်တလောပြီးစီးမှု")</h2>
                 </div>
             </div>
-            <div class="week-strip" role="list" aria-label="လွန်ခဲ့သော ခုနစ်ရက် ပြီးစီးမှု">
+            <div class="week-strip" role="list" aria-label="@L.T("လွန်ခဲ့သော ခုနစ်ရက် ပြီးစီးမှု")">
                 @foreach (var day in RecentDays)
                 {
                     var key = day.ToString("yyyy-MM-dd");
                     var done = AppState.State.CountHistory.Any(item => item.Date == key);
-                    <div class="day-dot @(done ? "done" : null) @(day.Date == DateTime.Today ? "today" : null)" role="listitem" aria-label="@(BurmeseDateFormatter.Long(day) + (done ? "၊ ပြီးစီးသည်" : "၊ မပြီးသေးပါ"))">
-                        <span aria-hidden="true">@BurmeseDateFormatter.Short(day)</span>
+                    <div class="day-dot @(done ? "done" : null) @(day.Date == DateTime.Today ? "today" : null)" role="listitem" aria-label="@(L.Date(day) + (done ? "၊ ပြီးစီးသည်" : "၊ မပြီးသေးပါ"))">
+                        <span aria-hidden="true">@L.ShortDate(day)</span>
                         <b aria-hidden="true">@(done ? "✓" : "·")</b>
                     </div>
                 }
@@ -131,6 +132,6 @@
     private int CompletedDays => AppState.State.CountHistory.Select(item => item.Date).Distinct().Count();
     private int TotalDays => AppState.State.Plan?.Datasource.Sum(level => level.Datasources.Count) ?? 0;
     private int TotalCount => AppState.State.CountingProgress.Values.Sum();
-    private string ProgressValueText => $"{AppStateService.ToMyanmarNumber(AppState.TodayCount)} မှ {AppStateService.ToMyanmarNumber(AppState.TodayTarget)} ထိချက်၊ {AppStateService.ToMyanmarNumber((int)Math.Round(AppState.TodayProgress * 100))} ရာခိုင်နှုန်း";
+    private string ProgressValueText => L.IsEnglish ? $"{AppState.TodayCount} of {AppState.TodayTarget} counts, {Math.Round(AppState.TodayProgress * 100)} percent" : $"{L.Number(AppState.TodayCount)} မှ {L.Number(AppState.TodayTarget)} ထိချက်၊ {L.Number((int)Math.Round(AppState.TodayProgress * 100))} ရာခိုင်နှုန်း";
     private IEnumerable<DateTime> RecentDays => Enumerable.Range(-6, 7).Select(offset => DateTime.Today.AddDays(offset));
 }

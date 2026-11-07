@@ -1,15 +1,16 @@
+@inject UiText L
 @page "/setup"
 @inject AppStateService AppState
 @inject NavigationManager Navigation
 
-<PageTitle>အဓိဋ္ဌာန် စတင်ရန်</PageTitle>
+<PageTitle>@L.T("အဓိဋ္ဌာန် စတင်ရန်")</PageTitle>
 
 <section class="page setup-page">
     <header class="page-header">
         <div>
-            <p class="eyebrow">အစီအစဉ်</p>
-            <h1>အဓိဋ္ဌာန် ရွေးချယ်ရန်</h1>
-            <p class="muted">ယနေ့စတင်မည့် အစီအစဉ်ကို အောက်တွင် သတ်မှတ်ပါ။</p>
+            <p class="eyebrow">@L.T("အစီအစဉ်")</p>
+            <h1>@L.T("အဓိဋ္ဌာန် ရွေးချယ်ရန်")</h1>
+            <p class="muted">@L.T("ယနေ့စတင်မည့် အစီအစဉ်ကို အောက်တွင် သတ်မှတ်ပါ။")</p>
         </div>
     </header>
 
@@ -18,8 +19,8 @@
         <article class="glass-card current-plan-banner">
             <div class="badge-icon"><AppIcon Name="calendar" /></div>
             <div>
-                <strong>လက်ရှိအစီအစဉ်</strong>
-                <span>@AppState.GetCategory(AppState.State.Plan.Category)?.Label · @AppStateService.ToMyanmarNumber(AppState.TodayCount)/@AppStateService.ToMyanmarNumber(AppState.TodayTarget)</span>
+                <strong>@L.T("လက်ရှိအစီအစဉ်")</strong>
+                <span>@AppState.GetCategory(AppState.State.Plan.Category)?.Label · @L.Number(AppState.TodayCount)/@L.Number(AppState.TodayTarget)</span>
             </div>
         </article>
     }
@@ -28,12 +29,12 @@
         <div class="form-section-heading">
             <div class="badge-icon">၁</div>
             <div>
-                <h2>အမျိုးအစား</h2>
-                <p>လိုက်နာမည့် အဓိဋ္ဌာန်ကို ရွေးပါ</p>
+                <h2>@L.T("အမျိုးအစား")</h2>
+                <p>@L.T("လိုက်နာမည့် အဓိဋ္ဌာန်ကို ရွေးပါ")</p>
             </div>
         </div>
 
-        <label class="field-label" for="category">အဓိဋ္ဌာန် အမျိုးအစား</label>
+        <label class="field-label" for="category">@L.T("အဓိဋ္ဌာန် အမျိုးအစား")</label>
         <select id="category" class="select-field" @bind="Request.Category" @bind:after="CategoryChanged">
             @foreach (var category in AppState.Content.Categories)
             {
@@ -43,7 +44,7 @@
 
         @if (Request.Category != 5 && Levels.Count > 1)
         {
-            <label class="field-label" for="level">အဆင့်</label>
+            <label class="field-label" for="level">@L.T("အဆင့်")</label>
             <select id="level" class="select-field" @bind="Request.Level" @bind:after="LevelChanged">
                 @foreach (var level in Levels)
                 {
@@ -52,7 +53,7 @@
             </select>
         }
 
-        <label class="field-label" for="spell">ဂုဏ်တော်အမျိုးအစား</label>
+        <label class="field-label" for="spell">@L.T("ဂုဏ်တော်အမျိုးအစား")</label>
         <select id="spell" class="select-field" @bind="Request.SpellId">
             @foreach (var spell in Spells)
             {
@@ -64,36 +65,36 @@
         {
             <div class="two-column-fields">
                 <div>
-                    <label class="field-label" for="round-count">ပုတီးပတ် အရေအတွက်</label>
+                    <label class="field-label" for="round-count">@L.T("ပုတီးပတ် အရေအတွက်")</label>
                     <input id="round-count" class="text-field" type="number" min="1" max="108" required inputmode="numeric" aria-describedby="round-count-help" @bind="Request.CustomRoundCount" />
-                    <small id="round-count-help" class="field-help">၁ မှ ၁၀၈ အတွင်း ထည့်ပါ။</small>
+                    <small id="round-count-help" class="field-help">@L.T("၁ မှ ၁၀၈ အတွင်း ထည့်ပါ။")</small>
                 </div>
                 <div>
-                    <label class="field-label" for="touch-count">တစ်ပတ်လျှင် ထိရမည့်အရေအတွက်</label>
+                    <label class="field-label" for="touch-count">@L.T("တစ်ပတ်လျှင် ထိရမည့်အရေအတွက်")</label>
                     <input id="touch-count" class="text-field" type="number" min="1" max="108" required inputmode="numeric" aria-describedby="touch-count-help" @bind="Request.CustomTouchCount" />
-                    <small id="touch-count-help" class="field-help">၁ မှ ၁၀၈ အတွင်း ထည့်ပါ။</small>
+                    <small id="touch-count-help" class="field-help">@L.T("၁ မှ ၁၀၈ အတွင်း ထည့်ပါ။")</small>
                 </div>
             </div>
         }
         else
         {
-            <label class="field-label" for="multiplier">တစ်လုံးလျှင် ထိချက်အရေအတွက်</label>
+            <label class="field-label" for="multiplier">@L.T("တစ်လုံးလျှင် ထိချက်အရေအတွက်")</label>
             <select id="multiplier" class="select-field" @bind="Request.Multiplier">
                 @foreach (var option in AppStateService.Multipliers)
                 {
-                    <option value="@option.Value">@option.Label</option>
+                    <option value="@option.Value">@(L.IsEnglish ? $"{option.Value} beads" : option.Label)</option>
                 }
             </select>
         }
 
         <aside class="form-preview">
-            <span>ယနေ့ ရွေးချယ်ထားမှု</span>
+            <span>@L.T("ယနေ့ ရွေးချယ်ထားမှု")</span>
             <strong>@SelectedCategory?.Label</strong>
             <p>@SelectedSpell?.Label</p>
         </aside>
 
         <button class="primary-button wide-button" type="submit">
-            <AppIcon Name="counter" /> အစီအစဉ်သိမ်းပြီး စတင်မည်
+            <AppIcon Name="counter" /> @L.T("အစီအစဉ်သိမ်းပြီး စတင်မည်")
         </button>
     </form>
 </section>

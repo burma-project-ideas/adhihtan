@@ -1,3 +1,4 @@
+@inject UiText L
 <div class="counter-face counter-face-@Style">
     @if (Style == "beads" || Style == "traditional")
     {
@@ -29,8 +30,8 @@
     else if (Style == "smart")
     {
         <div class="smart-meter" aria-hidden="true">
-            <span>@AppStateService.ToMyanmarNumber(SessionCount)</span>
-            <small>စုစုပေါင်း</small>
+            <span>@L.Number(SessionCount)</span>
+            <small>@L.T("စုစုပေါင်း")</small>
         </div>
     }
 
@@ -44,18 +45,18 @@
         @if (Style == "swipe")
         {
             <span class="swipe-arrow">↑</span>
-            <small>အပေါ်သို့ ဆွဲပါ</small>
+            <small>@L.T("အပေါ်သို့ ဆွဲပါ")</small>
         }
         else if (Style == "landscape")
         {
-            <span class="landscape-count">@AppStateService.ToMyanmarNumber(Count)</span>
-            <small>ထိ၍ ရေတွက်ပါ</small>
+            <span class="landscape-count">@L.Number(Count)</span>
+            <small>@L.T("ထိ၍ ရေတွက်ပါ")</small>
         }
         else
         {
             <AppIcon Name="counter" />
-            <strong>@AppStateService.ToMyanmarNumber(Count)</strong>
-            <small>ထိ၍ ရေတွက်ပါ</small>
+            <strong>@L.Number(Count)</strong>
+            <small>@L.T("ထိ၍ ရေတွက်ပါ")</small>
         }
     </button>
 </div>
@@ -71,7 +72,7 @@
     private double? _pointerStartY;
     private int FilledBeads => (int)Math.Round(Math.Min(Math.Max(Total, 9), 27) * Math.Clamp(Progress, 0, 1));
     private double ProgressPercent => Math.Round(Math.Clamp(Progress, 0, 1) * 100, 2);
-    private string AccessibleLabel => $"ပုတီးတစ်လုံး ရေတွက်မည်။ လက်ရှိ {AppStateService.ToMyanmarNumber(SessionCount)} ထိချက်";
+    private string AccessibleLabel => L.IsEnglish ? $"Count one bead. Current count: {SessionCount}" : $"ပုတီးတစ်လုံး ရေတွက်မည်။ လက်ရှိ {L.Number(SessionCount)} ထိချက်";
 
     private Task HandleClickAsync() => Style == "swipe" ? Task.CompletedTask : OnCount.InvokeAsync();
 

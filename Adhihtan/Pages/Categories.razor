@@ -1,3 +1,4 @@
+@inject UiText L
 @page "/categories"
 @inject AppStateService AppState
 
@@ -6,16 +7,16 @@
 <section class="page categories-page">
     <header class="page-header">
         <div>
-            <p class="eyebrow">လေ့လာရန်</p>
-            <h1>အဓိဋ္ဌာန်များ</h1>
-            <p class="muted">မူရင်းအက်ပ်မှ အဓိဋ္ဌာန်နည်းလမ်းနှင့် အစီအစဉ်များ</p>
+            <p class="eyebrow">@L.T("လေ့လာရန်")</p>
+            <h1>@L.T("အဓိဋ္ဌာန်များ")</h1>
+            <p class="muted">@L.T("မူရင်းအက်ပ်မှ အဓိဋ္ဌာန်နည်းလမ်းနှင့် အစီအစဉ်များ")</p>
         </div>
     </header>
 
-    <label class="field-label" for="category-search">အဓိဋ္ဌာန် ရှာရန်</label>
+    <label class="field-label" for="category-search">@L.T("အဓိဋ္ဌာန် ရှာရန်")</label>
     <div class="search-box">
         <AppIcon Name="search" />
-        <input id="category-search" type="search" placeholder="အမည် သို့မဟုတ် အကြောင်းအရာ ရိုက်ပါ" @bind="SearchText" @bind:event="oninput" />
+        <input id="category-search" type="search" placeholder="@L.T("အမည် သို့မဟုတ် အကြောင်းအရာ ရိုက်ပါ")" @bind="SearchText" @bind:event="oninput" />
     </div>
     <p class="visually-hidden" role="status" aria-live="polite" aria-atomic="true">@SearchResultSummary</p>
 
@@ -26,7 +27,7 @@
                 <img src="@GetCategoryImage(category.Value)" alt="" />
                 <span class="category-card-overlay"></span>
                 <span class="category-card-content">
-                    <small>@category.Duration ရက်</small>
+                    <small>@L.Digits(category.Duration) @(L.IsEnglish ? "days" : "ရက်")</small>
                     <strong>@category.Label</strong>
                     <em>@ShortDescription(category)</em>
                 </span>
@@ -38,8 +39,8 @@
     {
         <article class="glass-card empty-state compact">
             <AppIcon Name="search" />
-            <h2>ကိုက်ညီသော အဓိဋ္ဌာန် မတွေ့ပါ</h2>
-            <p>စာလုံးပေါင်းစစ်ပါ၊ သို့မဟုတ် အခြားအမည်ဖြင့် ရှာကြည့်ပါ။</p>
+            <h2>@L.T("ကိုက်ညီသော အဓိဋ္ဌာန် မတွေ့ပါ")</h2>
+            <p>@L.T("စာလုံးပေါင်းစစ်ပါ၊ သို့မဟုတ် အခြားအမည်ဖြင့် ရှာကြည့်ပါ။")</p>
         </article>
     }
 </section>
@@ -54,7 +55,7 @@
 
     private string SearchResultSummary => string.IsNullOrWhiteSpace(SearchText)
         ? string.Empty
-        : $"ကိုက်ညီသော အဓိဋ္ဌာန် {AppStateService.ToMyanmarNumber(FilteredCategories.Count())} ခု တွေ့သည်";
+        : $"ကိုက်ညီသော အဓိဋ္ဌာန် {L.Number(FilteredCategories.Count())} ခု တွေ့သည်";
 
     private static string GetCategoryImage(int id) => id switch
     {

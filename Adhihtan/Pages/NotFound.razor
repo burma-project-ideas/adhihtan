@@ -1,13 +1,14 @@
-﻿@page "/not-found"
+@inject UiText L
+@page "/not-found"
 @layout MainLayout
 
-<PageTitle>စာမျက်နှာ မတွေ့ပါ</PageTitle>
+<PageTitle>@L.T("စာမျက်နှာ မတွေ့ပါ")</PageTitle>
 
 <section class="page">
     <article class="glass-card empty-state">
         <div class="empty-state-icon"><AppIcon Name="info" /></div>
-        <h1>စာမျက်နှာ မတွေ့ပါ</h1>
-        <p>သင်ဖွင့်လိုသော နေရာမရှိတော့ပါ။ ပင်မစာမျက်နှာသို့ ပြန်သွားနိုင်ပါသည်။</p>
-        <a class="primary-button" href="/">ပင်မသို့ ပြန်မည်</a>
+        <h1>@L.T("စာမျက်နှာ မတွေ့ပါ")</h1>
+        <p>@L.T("သင်ဖွင့်လိုသော နေရာမရှိတော့ပါ။ ပင်မစာမျက်နှာသို့ ပြန်သွားနိုင်ပါသည်။")</p>
+        <a class="primary-button" href="/">@L.T("ပင်မသို့ ပြန်မည်")</a>
     </article>
 </section>

@@ -1,36 +1,37 @@
-<nav class="bottom-nav" aria-label="အဓိက လမ်းညွှန်">
+@inject UiText L
+<nav class="bottom-nav" aria-label="@(L.IsEnglish ? "Main navigation" : "အဓိက လမ်းညွှန်")">
     <div class="nav-brand" aria-hidden="true">
         <span class="nav-brand-mark">
             <img src="assets/images/logo-orange.png" alt="" />
         </span>
-        <span><strong>အဓိဋ္ဌာန်</strong><small>ဝိပဿနာ &amp; ပုတီးစိပ်</small></span>
+        <span><strong>@L.T("အဓိဋ္ဌာန်")</strong><small>@L.T("ဝိပဿနာ & ပုတီးစိပ်")</small></span>
     </div>
 
     <div class="nav-links">
         <NavLink href="/" Match="NavLinkMatch.All" class="bottom-nav-item">
             <AppIcon Name="home" />
-            <span><span class="mobile-nav-label">ပင်မ</span><span class="desktop-nav-label">ယနေ့ အဓိဋ္ဌာန်</span></span>
+            <span><span class="mobile-nav-label">@L.T("ပင်မ")</span><span class="desktop-nav-label">@L.T("ယနေ့ အဓိဋ္ဌာန်")</span></span>
         </NavLink>
         <NavLink href="setup" class="bottom-nav-item">
             <AppIcon Name="setup" />
-            <span><span class="mobile-nav-label">စတင်</span><span class="desktop-nav-label">အဓိဋ္ဌာန် စတင်ရန်</span></span>
+            <span><span class="mobile-nav-label">@L.T("စတင်")</span><span class="desktop-nav-label">@L.T("အဓိဋ္ဌာန် စတင်ရန်")</span></span>
         </NavLink>
         <NavLink href="counter" class="bottom-nav-item counter-tab">
             <span class="counter-tab-icon"><AppIcon Name="counter" /></span>
-            <span class="counter-tab-label"><span class="mobile-nav-label">ပုတီး</span><span class="desktop-nav-label">ပုတီးစိပ် ကောင်တာ</span></span>
+            <span class="counter-tab-label"><span class="mobile-nav-label">@L.T("ပုတီး")</span><span class="desktop-nav-label">@L.T("ပုတီးစိပ် ကောင်တာ")</span></span>
         </NavLink>
         <NavLink href="categories" class="bottom-nav-item">
             <AppIcon Name="categories" />
-            <span><span class="mobile-nav-label">အမျိုးအစား</span><span class="desktop-nav-label">အမျိုးအစားများ</span></span>
+            <span><span class="mobile-nav-label">@L.T("အမျိုးအစား")</span><span class="desktop-nav-label">@L.T("အမျိုးအစားများ")</span></span>
         </NavLink>
         <NavLink href="settings" class="bottom-nav-item">
             <AppIcon Name="settings" />
-            <span><span class="mobile-nav-label">ဆက်တင်</span><span class="desktop-nav-label">ဆက်တင်များ</span></span>
+            <span><span class="mobile-nav-label">@L.T("ဆက်တင်")</span><span class="desktop-nav-label">@L.T("ဆက်တင်များ")</span></span>
         </NavLink>
     </div>
 
     <aside class="nav-note">
-        <strong>✦ သတိပဋ္ဌာန်</strong>
-        <p>စိတ်တည်ငြိမ်အေးချမ်းစေရန် နေ့စဉ် အဓိဋ္ဌာန်ပြုကြပါစို့။</p>
+        <strong>@L.T("✦ သတိပဋ္ဌာန်")</strong>
+        <p>@L.T("စိတ်တည်ငြိမ်အေးချမ်းစေရန် နေ့စဉ် အဓိဋ္ဌာန်ပြုကြပါစို့။")</p>
     </aside>
 </nav>

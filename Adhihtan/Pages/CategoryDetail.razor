@@ -1,3 +1,4 @@
+@inject UiText L
 @page "/categories/{Id:int}"
 @inject AppStateService AppState
 
@@ -8,8 +9,8 @@
     <section class="page">
         <article class="glass-card empty-state">
             <AppIcon Name="info" />
-            <h1>အချက်အလက် မတွေ့ပါ</h1>
-            <NavLink class="primary-button" href="categories">အဓိဋ္ဌာန်များသို့ ပြန်မည်</NavLink>
+            <h1>@L.T("အချက်အလက် မတွေ့ပါ")</h1>
+            <NavLink class="primary-button" href="categories">@L.T("အဓိဋ္ဌာန်များသို့ ပြန်မည်")</NavLink>
         </article>
     </section>
 }
@@ -17,27 +18,27 @@ else
 {
     <section class="category-detail-page">
         <header class="detail-hero" style="background-image: linear-gradient(180deg, rgba(35,28,24,.08), rgba(35,28,24,.9)), url('@CategoryImage')">
-            <NavLink class="floating-back-button" href="categories" aria-label="အဓိဋ္ဌာန်များသို့ ပြန်မည်"><AppIcon Name="back" /></NavLink>
+            <NavLink class="floating-back-button" href="categories" aria-label="@L.T("အဓိဋ္ဌာန်များသို့ ပြန်မည်")"><AppIcon Name="back" /></NavLink>
             <div>
-                <span class="detail-duration">@Category.Duration ရက်တာ</span>
+                <span class="detail-duration">@L.Digits(Category.Duration) @(L.IsEnglish ? "days" : "ရက်တာ")</span>
                 <h1>@Category.Label</h1>
                 <p>@Category.Format</p>
             </div>
         </header>
 
         <div class="detail-body">
-            <div class="detail-tabs" role="tablist" aria-label="အဓိဋ္ဌာန် အကြောင်းအရာ" @onkeydown="HandleTabKeyDownAsync">
-                <button id="tab-about" type="button" role="tab" aria-selected="@(SelectedTab == "about" ? "true" : "false")" aria-controls="panel-about" tabindex="@(SelectedTab == "about" ? 0 : -1)" @ref="_aboutTab" class="@(SelectedTab == "about" ? "active" : null)" @onclick="ShowAbout">အကြောင်း</button>
-                <button id="tab-benefit" type="button" role="tab" aria-selected="@(SelectedTab == "benefit" ? "true" : "false")" aria-controls="panel-benefit" tabindex="@(SelectedTab == "benefit" ? 0 : -1)" @ref="_benefitTab" class="@(SelectedTab == "benefit" ? "active" : null)" @onclick="ShowBenefit">အကျိုး</button>
-                <button id="tab-plan" type="button" role="tab" aria-selected="@(SelectedTab == "plan" ? "true" : "false")" aria-controls="panel-plan" tabindex="@(SelectedTab == "plan" ? 0 : -1)" @ref="_planTab" class="@(SelectedTab == "plan" ? "active" : null)" @onclick="ShowPlan">အစီအစဉ်</button>
+            <div class="detail-tabs" role="tablist" aria-label="@L.T("အဓိဋ္ဌာန် အကြောင်းအရာ")" @onkeydown="HandleTabKeyDownAsync">
+                <button id="tab-about" type="button" role="tab" aria-selected="@(SelectedTab == "about" ? "true" : "false")" aria-controls="panel-about" tabindex="@(SelectedTab == "about" ? 0 : -1)" @ref="_aboutTab" class="@(SelectedTab == "about" ? "active" : null)" @onclick="ShowAbout">@L.T("အကြောင်း")</button>
+                <button id="tab-benefit" type="button" role="tab" aria-selected="@(SelectedTab == "benefit" ? "true" : "false")" aria-controls="panel-benefit" tabindex="@(SelectedTab == "benefit" ? 0 : -1)" @ref="_benefitTab" class="@(SelectedTab == "benefit" ? "active" : null)" @onclick="ShowBenefit">@L.T("အကျိုး")</button>
+                <button id="tab-plan" type="button" role="tab" aria-selected="@(SelectedTab == "plan" ? "true" : "false")" aria-controls="panel-plan" tabindex="@(SelectedTab == "plan" ? 0 : -1)" @ref="_planTab" class="@(SelectedTab == "plan" ? "active" : null)" @onclick="ShowPlan">@L.T("အစီအစဉ်")</button>
             </div>
 
             @if (SelectedTab == "about")
             {
                 <div id="panel-about" role="tabpanel" aria-labelledby="tab-about" tabindex="0">
                     <article class="glass-card prose-card">
-                        <p class="eyebrow">ပြုလုပ်နည်း</p>
-                        <h2>ဘယ်လို အဓိဋ္ဌာန်ဝင်မလဲ</h2>
+                        <p class="eyebrow">@L.T("ပြုလုပ်နည်း")</p>
+                        <h2>@L.T("ဘယ်လို အဓိဋ္ဌာန်ဝင်မလဲ")</h2>
                         <p class="multiline-text">@Category.HowToPray</p>
                     </article>
 
@@ -54,7 +55,7 @@ else
             {
                 <div id="panel-benefit" role="tabpanel" aria-labelledby="tab-benefit" tabindex="0">
                     <article class="glass-card prose-card accent-card">
-                        <p class="eyebrow">အကျိုးကျေးဇူး</p>
+                        <p class="eyebrow">@L.T("အကျိုးကျေးဇူး")</p>
                         <h2>@Category.Label</h2>
                         <p class="multiline-text">@Category.Benefit</p>
                     </article>
@@ -73,7 +74,7 @@ else
                 <div id="panel-plan" role="tabpanel" aria-labelledby="tab-plan" tabindex="0">
                     @if (Schedule.Count > 1)
                     {
-                        <label class="field-label" for="detail-level">အဆင့်ရွေးရန်</label>
+                        <label class="field-label" for="detail-level">@L.T("အဆင့်ရွေးရန်")</label>
                         <select id="detail-level" class="select-field detail-level-select" @bind="SelectedLevel">
                             @foreach (var level in Schedule)
                             {
@@ -86,16 +87,16 @@ else
                         @foreach (var entry in SelectedEntries)
                         {
                             <article class="glass-card schedule-row">
-                                <span class="schedule-day">@AppStateService.ToMyanmarNumber(entry.Number)</span>
+                                <span class="schedule-day">@L.Number(entry.Number)</span>
                                 <div>
                                     <small>@entry.MmDay</small>
                                     <h3>@entry.SpellName</h3>
                                     @if (entry.IsVegetarian)
                                     {
-                                        <em>● သက်သတ်လွတ်နေ့</em>
+                                        <em>@L.T("● သက်သတ်လွတ်နေ့")</em>
                                     }
                                 </div>
-                                <strong>@entry.SpellCount ပတ်</strong>
+                                <strong>@L.Digits(entry.SpellCount) @(L.IsEnglish ? "rounds" : "ပတ်")</strong>
                             </article>
                         }
                     </div>
@@ -103,7 +104,7 @@ else
             }
 
             <NavLink class="primary-button wide-button detail-start-button" href="@($"setup?category={Id}")">
-                <AppIcon Name="setup" /> ဤအဓိဋ္ဌာန်ကို စတင်မည်
+                <AppIcon Name="setup" /> @L.T("ဤအဓိဋ္ဌာန်ကို စတင်မည်")
             </NavLink>
         </div>
     </section>

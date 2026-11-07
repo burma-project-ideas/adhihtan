@@ -1,33 +1,34 @@
+@inject UiText L
 @page "/counter"
 @implements IAsyncDisposable
 @inject AppStateService AppState
 @inject BrowserStorage Browser
 
-<PageTitle>ပုတီးစိပ်ရန်</PageTitle>
+<PageTitle>@L.T("ပုတီးစိပ်ရန်")</PageTitle>
 
 <section class="page counter-page">
     @if (TodayEntry is null)
     {
-        <header class="page-header"><h1>ပုတီးစိပ်ရန်</h1></header>
+        <header class="page-header"><h1>@L.T("ပုတီးစိပ်ရန်")</h1></header>
         <article class="glass-card empty-state">
             <div class="empty-state-icon"><AppIcon Name="counter" /></div>
-            <h2>ယနေ့အစီအစဉ် မရှိသေးပါ</h2>
-            <p>အဓိဋ္ဌာန်အမျိုးအစားနှင့် ပုတီးစိပ်မည့်အရေအတွက်ကို အရင်ရွေးချယ်ပါ။</p>
-            <NavLink class="primary-button" href="setup">အစီအစဉ် ရွေးမည်</NavLink>
+            <h2>@L.T("ယနေ့အစီအစဉ် မရှိသေးပါ")</h2>
+            <p>@L.T("အဓိဋ္ဌာန်အမျိုးအစားနှင့် ပုတီးစိပ်မည့်အရေအတွက်ကို အရင်ရွေးချယ်ပါ။")</p>
+            <NavLink class="primary-button" href="setup">@L.T("အစီအစဉ် ရွေးမည်")</NavLink>
         </article>
     }
     else
     {
         <header class="counter-header">
-            <p class="muted">@BurmeseDateFormatter.Long(DateTime.Today)</p>
+            <p class="muted">@L.Date(DateTime.Today)</p>
             <h1 @ref="_counterHeading" tabindex="-1">@TodayEntry.SpellName</h1>
-            <p>@TodayEntry.SpellCount ပတ် × @AppStateService.ToMyanmarNumber(AppState.State.Plan!.Multiplier) = @AppStateService.ToMyanmarNumber(AppState.TodayTarget) ထိချက်</p>
+            <p>@L.Digits(TodayEntry.SpellCount) @(L.IsEnglish ? "rounds" : "ပတ်") × @L.Number(AppState.State.Plan!.Multiplier) = @L.Number(AppState.TodayTarget) @(L.IsEnglish ? "counts" : "ထိချက်")</p>
         </header>
 
         <div class="counter-progress-row">
-            <span>@AppStateService.ToMyanmarNumber(AppState.TodayCount)</span>
-            <div class="progress-track" role="progressbar" aria-label="ယနေ့ ပုတီးစိပ်ပြီးစီးမှု" aria-valuenow="@AppState.TodayCount" aria-valuemin="0" aria-valuemax="@AppState.TodayTarget" aria-valuetext="@ProgressValueText"><span style="width:@(AppState.TodayProgress * 100)%"></span></div>
-            <span>@AppStateService.ToMyanmarNumber(AppState.TodayTarget)</span>
+            <span>@L.Number(AppState.TodayCount)</span>
+            <div class="progress-track" role="progressbar" aria-label="@L.T("ယနေ့ ပုတီးစိပ်ပြီးစီးမှု")" aria-valuenow="@AppState.TodayCount" aria-valuemin="0" aria-valuemax="@AppState.TodayTarget" aria-valuetext="@ProgressValueText"><span style="width:@(AppState.TodayProgress * 100)%"></span></div>
+            <span>@L.Number(AppState.TodayTarget)</span>
         </div>
 
         <CounterFace Style="@AppState.State.Settings.CounterStyle"
@@ -41,19 +42,19 @@
         {
             <div class="completion-banner" role="status" aria-live="polite" aria-atomic="true">
                 <span>✓</span>
-                <div><strong>သာဓု၊ ယနေ့အဓိဋ္ဌာန် ပြီးစီးပါပြီ</strong><small>မှတ်တမ်းထဲသို့ အလိုအလျောက် သိမ်းထားပါသည်</small></div>
+                <div><strong>@L.T("သာဓု၊ ယနေ့အဓိဋ္ဌာန် ပြီးစီးပါပြီ")</strong><small>@L.T("မှတ်တမ်းထဲသို့ အလိုအလျောက် သိမ်းထားပါသည်")</small></div>
             </div>
         }
 
         <div class="counter-actions">
             <button class="secondary-action" type="button" @onclick="AppState.UndoAsync" disabled="@(AppState.TodayCount == 0)">
-                <AppIcon Name="undo" /><span>နောက်ပြန်</span>
+                <AppIcon Name="undo" /><span>@L.T("နောက်ပြန်")</span>
             </button>
             <button class="secondary-action" type="button" @ref="_resetButton" @onclick="RequestReset" disabled="@(AppState.TodayCount == 0)">
-                <AppIcon Name="reset" /><span>ပြန်စ</span>
+                <AppIcon Name="reset" /><span>@L.T("ပြန်စ")</span>
             </button>
             <button class="secondary-action" type="button" @onclick="AppState.ShareTodayAsync">
-                <AppIcon Name="share" /><span>မျှဝေ</span>
+                <AppIcon Name="share" /><span>@L.T("မျှဝေ")</span>
             </button>
         </div>
     }
@@ -63,11 +64,11 @@
 {
     <dialog id="reset-dialog" class="modal-card" aria-labelledby="reset-title" aria-describedby="reset-description" @onkeydown="HandleDialogKeyDownAsync">
         <div class="modal-icon danger"><AppIcon Name="reset" /></div>
-        <h2 id="reset-title">ယနေ့ရေတွက်မှုကို ပြန်စမလား</h2>
-        <p id="reset-description">လက်ရှိရေတွက်ထားသော အရေအတွက်ကို သုညသို့ ပြန်ထားမည်။ ဤလုပ်ဆောင်ချက်ကို နောက်ပြန်ယူ၍မရပါ။</p>
+        <h2 id="reset-title">@L.T("ယနေ့ရေတွက်မှုကို ပြန်စမလား")</h2>
+        <p id="reset-description">@L.T("လက်ရှိရေတွက်ထားသော အရေအတွက်ကို သုညသို့ ပြန်ထားမည်။ ဤလုပ်ဆောင်ချက်ကို နောက်ပြန်ယူ၍မရပါ။")</p>
         <div class="modal-actions">
-            <button class="text-button" type="button" autofocus @onclick="CancelResetAsync">မပြန်စပါ</button>
-            <button class="danger-button" type="button" @onclick="ConfirmResetAsync">ရေတွက်မှု ပြန်စမည်</button>
+            <button class="text-button" type="button" autofocus @onclick="CancelResetAsync">@L.T("မပြန်စပါ")</button>
+            <button class="danger-button" type="button" @onclick="ConfirmResetAsync">@L.T("ရေတွက်မှု ပြန်စမည်")</button>
         </div>
     </dialog>
 }
@@ -144,7 +145,7 @@
         _focusCounterHeading = true;
     }
 
-    private string ProgressValueText => $"{AppStateService.ToMyanmarNumber(AppState.TodayCount)} မှ {AppStateService.ToMyanmarNumber(AppState.TodayTarget)} ထိချက်၊ {AppStateService.ToMyanmarNumber((int)Math.Round(AppState.TodayProgress * 100))} ရာခိုင်နှုန်း";
+    private string ProgressValueText => L.IsEnglish ? $"{AppState.TodayCount} of {AppState.TodayTarget} counts, {Math.Round(AppState.TodayProgress * 100)} percent" : $"{L.Number(AppState.TodayCount)} မှ {L.Number(AppState.TodayTarget)} ထိချက်၊ {L.Number((int)Math.Round(AppState.TodayProgress * 100))} ရာခိုင်နှုန်း";
 
     public async ValueTask DisposeAsync() => await Browser.SetWakeLockAsync(false);
 }

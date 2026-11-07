@@ -47,6 +47,7 @@ public sealed class AppStateService(HttpClient httpClient, BrowserStorage storag
         NormalizeState();
         EnsureCustomTodayEntry();
         await storage.SetFontEncodingAsync(State.Settings.FontEncoding);
+        await storage.SetLanguageAsync(State.Settings.Language);
         _initialized = true;
         await storage.SaveAsync(State);
         Changed?.Invoke();
@@ -198,6 +199,7 @@ public sealed class AppStateService(HttpClient httpClient, BrowserStorage storag
         NormalizeState();
         await SaveAndNotifyAsync();
         await storage.SetFontEncodingAsync(State.Settings.FontEncoding);
+        await storage.SetLanguageAsync(State.Settings.Language);
         await storage.SetWakeLockAsync(State.Settings.KeepAwake && State.Plan is not null);
     }
 
@@ -304,6 +306,7 @@ public sealed class AppStateService(HttpClient httpClient, BrowserStorage storag
     private void NormalizeState()
     {
         State.Settings ??= new AppSettings();
+        State.Settings.Language = State.Settings.Language == "en" ? "en" : "mm";
         State.CountingProgress ??= [];
         State.CountHistory ??= [];
         State.Settings.Audio = State.Settings.Audio is "none" or "sound" or "vibrate" or "sound_vibrate"

@@ -11,6 +11,7 @@ public sealed class PersistedAppState
 
 public sealed class AppSettings
 {
+    public string Language { get; set; } = "mm";
     public string Audio { get; set; } = "none";
     public bool Alarm { get; set; }
     public bool IsDarkMode { get; set; }

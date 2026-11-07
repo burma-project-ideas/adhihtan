@@ -1,60 +1,74 @@
+@inject UiText L
 @page "/settings"
 @inject AppStateService AppState
 
-<PageTitle>ဆက်တင်များ</PageTitle>
+<PageTitle>@L.T("ဆက်တင်များ")</PageTitle>
 
 <section class="page settings-page">
     <header class="page-header">
         <div>
-            <p class="eyebrow">စိတ်ကြိုက်ပြင်ရန်</p>
-            <h1>ဆက်တင်များ</h1>
-            <p class="muted">ပြောင်းလဲမှုအားလုံးကို ဤစက်ထဲတွင် အလိုအလျောက်သိမ်းထားမည်</p>
+            <p class="eyebrow">@L.T("စိတ်ကြိုက်ပြင်ရန်")</p>
+            <h1>@L.T("ဆက်တင်များ")</h1>
+            <p class="muted">@L.T("ပြောင်းလဲမှုအားလုံးကို ဤစက်ထဲတွင် အလိုအလျောက်သိမ်းထားမည်")</p>
         </div>
     </header>
 
     <section class="settings-group">
-        <h2>ပုတီးစိပ်ခြင်း</h2>
+        <h2>@L.T("ဘာသာစကား")</h2>
         <article class="glass-card settings-card">
             <label class="setting-select-row">
-                <span><b>ကောင်တာပုံစံ</b><small>ထိနှိပ်ရာတွင် မြင်ရမည့်ပုံစံ</small></span>
-                <select value="@AppState.State.Settings.CounterStyle" @onchange="CounterStyleChanged">
-                    @foreach (var style in CounterStyles)
-                    {
-                        <option value="@style.Value">@style.Label</option>
-                    }
+                <span><b>@L.T("ဘာသာစကား")</b><small>@L.T("အက်ပ်တွင် အသုံးပြုမည့် ဘာသာစကား")</small></span>
+                <select value="@AppState.State.Settings.Language" @onchange="LanguageChanged">
+                    <option value="mm">မြန်မာ (MM)</option>
+                    <option value="en">English (EN)</option>
                 </select>
             </label>
-            <label class="setting-select-row">
-                <span><b>ထိနှိပ်သံ</b><small>အသံ သို့မဟုတ် တုန်ခါမှု</small></span>
-                <select value="@AppState.State.Settings.Audio" @onchange="AudioChanged">
-                    <option value="none">မသုံးပါ</option>
-                    <option value="sound">အသံ</option>
-                    <option value="vibrate">တုန်ခါမှု</option>
-                    <option value="sound_vibrate">အသံနှင့် တုန်ခါမှု</option>
-                </select>
-            </label>
-            <SettingToggle Title="မျက်နှာပြင် မပိတ်စေရန်" Description="ပုတီးစိပ်နေစဉ် ဖုန်းမျက်နှာပြင်ကို ဖွင့်ထားမည်" Checked="AppState.State.Settings.KeepAwake" Changed="KeepAwakeChanged" />
-            <SettingToggle Title="ရေတွက်မှု ပြန်စမည့်အခါ အတည်ပြုရန်" Description="ယနေ့အရေအတွက်ကို သုညသို့မပြန်မီ မေးမြန်းမည်" Checked="AppState.State.Settings.ConfirmReset" Changed="ConfirmResetChanged" />
-            <SettingToggle Title="ပြီးဆုံးချိန် သတိပေးရန်" Description="သတ်မှတ်အရေအတွက် ပြည့်ချိန်တွင် သတိပေးမည်" Checked="AppState.State.Settings.Alarm" Changed="AlarmChanged" />
         </article>
     </section>
 
     <section class="settings-group">
-        <h2>အသွင်အပြင်</h2>
+        <h2>@L.T("ပုတီးစိပ်ခြင်း")</h2>
         <article class="glass-card settings-card">
-            <SettingToggle Title="အမှောင်အရောင်" Description="ညပိုင်းတွင် မျက်စိသက်သာစေမည့်အရောင်" Checked="AppState.State.Settings.IsDarkMode" Changed="DarkModeChanged" />
-            <SettingToggle Title="အရောင်ကွာခြားမှု မြှင့်ရန်" Description="စာသားနှင့် ခလုတ်များကို ပိုထင်ရှားစေမည်" Checked="AppState.State.Settings.HighContrast" Changed="HighContrastChanged" />
             <label class="setting-select-row">
-                <span><b>နောက်ခံရာသီ</b><small>အက်ပ်နောက်ခံအရောင်ကို ရွေးပါ</small></span>
-                <select value="@AppState.State.Settings.BackgroundStyle" @onchange="BackgroundChanged">
-                    <option value="rain">မိုးရာသီ</option>
-                    <option value="summer">နွေရာသီ</option>
-                    <option value="autumn">ဆောင်းဦး</option>
-                    <option value="winter">ဆောင်းရာသီ</option>
+                <span><b>@L.T("ကောင်တာပုံစံ")</b><small>@L.T("ထိနှိပ်ရာတွင် မြင်ရမည့်ပုံစံ")</small></span>
+                <select value="@AppState.State.Settings.CounterStyle" @onchange="CounterStyleChanged">
+                    @foreach (var style in CounterStyles)
+                    {
+                        <option value="@style.Value">@L.T(style.Label)</option>
+                    }
                 </select>
             </label>
             <label class="setting-select-row">
-                <span><b>မြန်မာစာ</b><small>အသုံးပြုမည့် စာလုံးဖော်ပြမှုပုံစံ</small></span>
+                <span><b>@L.T("ထိနှိပ်သံ")</b><small>@L.T("အသံ သို့မဟုတ် တုန်ခါမှု")</small></span>
+                <select value="@AppState.State.Settings.Audio" @onchange="AudioChanged">
+                    <option value="none">@L.T("မသုံးပါ")</option>
+                    <option value="sound">@L.T("အသံ")</option>
+                    <option value="vibrate">@L.T("တုန်ခါမှု")</option>
+                    <option value="sound_vibrate">@L.T("အသံနှင့် တုန်ခါမှု")</option>
+                </select>
+            </label>
+            <SettingToggle Title="@L.T("မျက်နှာပြင် မပိတ်စေရန်")" Description="@L.T("ပုတီးစိပ်နေစဉ် ဖုန်းမျက်နှာပြင်ကို ဖွင့်ထားမည်")" Checked="AppState.State.Settings.KeepAwake" Changed="KeepAwakeChanged" />
+            <SettingToggle Title="@L.T("ရေတွက်မှု ပြန်စမည့်အခါ အတည်ပြုရန်")" Description="@L.T("ယနေ့အရေအတွက်ကို သုညသို့မပြန်မီ မေးမြန်းမည်")" Checked="AppState.State.Settings.ConfirmReset" Changed="ConfirmResetChanged" />
+            <SettingToggle Title="@L.T("ပြီးဆုံးချိန် သတိပေးရန်")" Description="@L.T("သတ်မှတ်အရေအတွက် ပြည့်ချိန်တွင် သတိပေးမည်")" Checked="AppState.State.Settings.Alarm" Changed="AlarmChanged" />
+        </article>
+    </section>
+
+    <section class="settings-group">
+        <h2>@L.T("အသွင်အပြင်")</h2>
+        <article class="glass-card settings-card">
+            <SettingToggle Title="@L.T("အမှောင်အရောင်")" Description="@L.T("ညပိုင်းတွင် မျက်စိသက်သာစေမည့်အရောင်")" Checked="AppState.State.Settings.IsDarkMode" Changed="DarkModeChanged" />
+            <SettingToggle Title="@L.T("အရောင်ကွာခြားမှု မြှင့်ရန်")" Description="@L.T("စာသားနှင့် ခလုတ်များကို ပိုထင်ရှားစေမည်")" Checked="AppState.State.Settings.HighContrast" Changed="HighContrastChanged" />
+            <label class="setting-select-row">
+                <span><b>@L.T("နောက်ခံရာသီ")</b><small>@L.T("အက်ပ်နောက်ခံအရောင်ကို ရွေးပါ")</small></span>
+                <select value="@AppState.State.Settings.BackgroundStyle" @onchange="BackgroundChanged">
+                    <option value="rain">@L.T("မိုးရာသီ")</option>
+                    <option value="summer">@L.T("နွေရာသီ")</option>
+                    <option value="autumn">@L.T("ဆောင်းဦး")</option>
+                    <option value="winter">@L.T("ဆောင်းရာသီ")</option>
+                </select>
+            </label>
+            <label class="setting-select-row">
+                <span><b>@L.T("မြန်မာစာ")</b><small>@L.T("အသုံးပြုမည့် စာလုံးဖော်ပြမှုပုံစံ")</small></span>
                 <select value="@AppState.State.Settings.FontEncoding" @onchange="FontChanged">
                     <option value="unicode">Unicode</option>
                     <option value="zawgyi">Zawgyi</option>
@@ -64,15 +78,15 @@
     </section>
 
     <section class="settings-group">
-        <h2>ဒေတာနှင့် အင်တာနက်မရှိချိန်</h2>
+        <h2>@L.T("ဒေတာနှင့် အင်တာနက်မရှိချိန်")</h2>
         <article class="glass-card backup-card">
             <div class="backup-copy">
                 <span class="badge-icon"><AppIcon Name="calendar" /></span>
-                <div><b>ဒေတာမိတ္တူ</b><small>အင်တာနက်မလိုဘဲ သိမ်းထားသော အစီအစဉ်နှင့် မှတ်တမ်းများ</small></div>
+                <div><b>@L.T("ဒေတာမိတ္တူ")</b><small>@L.T("အင်တာနက်မလိုဘဲ သိမ်းထားသော အစီအစဉ်နှင့် မှတ်တမ်းများ")</small></div>
             </div>
             <div class="backup-actions">
-                <button class="secondary-button" @onclick="AppState.ExportBackupAsync">ဒေတာမိတ္တူ ထုတ်မည်</button>
-                <label class="secondary-button file-button">ဒေတာမိတ္တူ ပြန်သွင်းမည်<InputFile OnChange="RestoreBackupAsync" accept="application/json,.json" aria-label="ဒေတာမိတ္တူ JSON ဖိုင် ရွေးရန်" /></label>
+                <button class="secondary-button" @onclick="AppState.ExportBackupAsync">@L.T("ဒေတာမိတ္တူ ထုတ်မည်")</button>
+                <label class="secondary-button file-button">@L.T("ဒေတာမိတ္တူ ပြန်သွင်းမည်")<InputFile OnChange="RestoreBackupAsync" accept="application/json,.json" aria-label="@L.T("ဒေတာမိတ္တူ JSON ဖိုင် ရွေးရန်")" /></label>
             </div>
             @if (!string.IsNullOrWhiteSpace(BackupMessage))
             {
@@ -95,6 +109,7 @@
         new("အချက်အလက်ပြပုံ", "smart"), new("ဒစ်ဂျစ်တယ်", "digital"), new("အလျားလိုက်", "landscape"), new("စေတီ", "pagoda")
     ];
 
+    private Task LanguageChanged(ChangeEventArgs args) => Update(settings => settings.Language = args.Value?.ToString() ?? "mm");
     private Task AudioChanged(ChangeEventArgs args) => Update(settings => settings.Audio = args.Value?.ToString() ?? "none");
     private Task CounterStyleChanged(ChangeEventArgs args) => Update(settings => settings.CounterStyle = args.Value?.ToString() ?? "default");
     private Task BackgroundChanged(ChangeEventArgs args) => Update(settings => settings.BackgroundStyle = args.Value?.ToString() ?? "rain");

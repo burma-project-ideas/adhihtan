@@ -88,6 +88,7 @@
                 // Browsers can disable service workers in private or insecure contexts.
             }
         },
+        setLanguage: language => { document.documentElement.lang = language === "en" ? "en" : "my"; },
         setFontEncoding: encoding => window.adhihtanMyanmar?.setEncoding(encoding),
         showDialog: id => {
             const dialog = document.getElementById(id);

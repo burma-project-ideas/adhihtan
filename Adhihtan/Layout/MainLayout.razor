@@ -1,3 +1,4 @@
+@inject UiText L
 @inherits LayoutComponentBase
 @implements IDisposable
 @inject AppStateService AppState
@@ -7,7 +8,7 @@
     <a class="skip-link"
        href="#main-content"
        @onclick="FocusMainContentAsync"
-       @onclick:preventDefault="true">ပင်မအကြောင်းအရာသို့ ကျော်သွားမည်</a>
+       @onclick:preventDefault="true">@L.T("ပင်မအကြောင်းအရာသို့ ကျော်သွားမည်")</a>
     @if (!AppState.IsInitialized)
     {
         <main id="main-content"
@@ -18,26 +19,26 @@
               aria-busy="true"
               tabindex="-1">
             <div class="loading-emblem" aria-hidden="true"><AppIcon Name="counter" /></div>
-            <strong>အဓိဋ္ဌာန်</strong>
-            <span>အချက်အလက်များ ပြင်ဆင်နေပါသည်…</span>
+            <strong>@L.T("အဓိဋ္ဌာန်")</strong>
+            <span>@L.T("အချက်အလက်များ ပြင်ဆင်နေပါသည်…")</span>
         </main>
     }
     else
     {
         <header class="desktop-topbar">
             <div>
-                <span>မင်္ဂလာပါ</span>
-                <strong>အဓိဋ္ဌာန်</strong>
+                <span>@L.T("မင်္ဂလာပါ")</span>
+                <strong>@L.T("အဓိဋ္ဌာန်")</strong>
             </div>
             <div class="desktop-topbar-actions">
-                <span class="desktop-date"><AppIcon Name="calendar" /> @BurmeseDateFormatter.Long(DateTime.Today)</span>
-                <NavLink class="desktop-counter-link" href="counter" aria-label="ပုတီးစိပ်ရန်"><AppIcon Name="counter" /></NavLink>
+                <span class="desktop-date"><AppIcon Name="calendar" /> @L.Date(DateTime.Today)</span>
+                <NavLink class="desktop-counter-link" href="counter" aria-label="@L.T("ပုတီးစိပ်ရန်")"><AppIcon Name="counter" /></NavLink>
             </div>
         </header>
         <main id="main-content" class="app-content" tabindex="-1">
             @Body
         </main>
-        <BottomNav />
+        <BottomNav @key="AppState.State.Settings.Language" />
     }
 </div>
 
