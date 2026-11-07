@@ -46,6 +46,7 @@
             <h2>@TodayEntry.SpellName</h2>
             <p class="muted">@TodayEntry.SpellCount ပတ် × @AppStateService.ToMyanmarNumber(AppState.State.Plan.Multiplier)</p>
 
+            <div class="dashboard-progress-ring" style="--daily-progress: @(AppState.TodayProgress * 100)%" aria-hidden="true"><span>@AppStateService.ToMyanmarNumber((int)Math.Round(AppState.TodayProgress * 100))<small>%</small></span></div>
             <div class="hero-count-row">
                 <strong>@AppStateService.ToMyanmarNumber(AppState.TodayCount)</strong>
                 <span>/ @AppStateService.ToMyanmarNumber(AppState.TodayTarget) ထိချက်</span>
