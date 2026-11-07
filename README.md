@@ -10,12 +10,13 @@
 
 | ပံ့ပိုးသူ / ရင်းမြစ် | ပံ့ပိုးထားသည့်အပိုင်း |
 | --- | --- |
-| [Sann Lynn Htun (@sannlynnhtun-coding)](https://github.com/sannlynnhtun-coding) | Git History အရ ပံ့ပိုးသူ၊ Blazor App နဲ့ UI ရေးသားမှု |
+| [Yan Naing Htin Kyaw](https://th.linkedin.com/in/yan-naing-htin-kyaw-5b6570256) | မူရင်း [Adhihtan Android App](https://play.google.com/store/apps/details?id=com.a_dhi_htan) ကို ဖန်တီးသူ၊ ဒီ Project ရဲ့ App Flow အတွက် Inspiration |
+| [Sann Lynn Htun (@sannlynnhtun-coding)](https://github.com/sannlynnhtun-coding) | မူရင်း App ရဲ့ Flow ကို Inspiration ယူပြီး Blazor WebAssembly နဲ့ ပြန်လည်ရေးသားထားတဲ့ Web App နဲ့ UI |
 | Android App `com.a_dhi_htan`၊ Version `1.3.1` | ပြန်လည်ထုတ်ယူထားတဲ့ အဓိဋ္ဌာန်အကြောင်းအရာနဲ့ အစီအစဉ်များ |
 | [Board UI](https://www.boardui.com/) | Floating Sidebar၊ Dashboard Panel၊ Button နဲ့ Settings Layout တို့အတွက် Design Reference |
 | Rabbit Conversion Rules (`rabbit-node` 1.0.4) | Unicode/Zawgyi ပြောင်းလဲဖော်ပြတဲ့ Generated Converter ရဲ့ Rules |
 
-မူရင်း Android App ရဲ့ Author နဲ့ Data ပြန်လည်ဖြန့်ဝေခွင့်ကို Recovered Metadata ထဲမှာ မဖော်ပြထားပါဘူး။ Image/Audio တွေရဲ့ Ownership အချက်အလက်လည်း မပြည့်စုံသေးပါဘူး။ ပြန်သုံးမယ်ဆိုရင် [Source Notices](THIRD_PARTY_NOTICES.md) ကို ဖတ်ပြီး သက်ဆိုင်ရာခွင့်ပြုချက်တွေကို စစ်ဆေးပါ။ Organization ဆီ ပြောင်းရွှေ့ထားတာက မူရင်းပံ့ပိုးသူတွေရဲ့ Credit ကို အစားထိုးတာ မဟုတ်ပါဘူး။
+မူရင်း Adhihtan Android App ကို **Yan Naing Htin Kyaw** က ဖန်တီးထားတာပါ။ ဒီ Repository က **Sann Lynn Htun ရဲ့ Blazor Recreation** ဖြစ်ပြီး မူရင်း App ရဲ့ Flow ကို Inspiration ယူထားတာပါ။ မူရင်း Creator ရဲ့ GitHub Username ကို မသိသေးတဲ့အတွက် LinkedIn နဲ့ Play Store Link တွေကိုပဲ Credit ပေးထားပါတယ်။ မူရင်း Data ပြန်လည်ဖြန့်ဝေခွင့်ကို Recovered Metadata ထဲမှာ မဖော်ပြထားပါဘူး။ Image/Audio တွေရဲ့ Ownership အချက်အလက်လည်း မပြည့်စုံသေးပါဘူး။ ပြန်သုံးမယ်ဆိုရင် [Source Notices](THIRD_PARTY_NOTICES.md) ကို ဖတ်ပြီး သက်ဆိုင်ရာခွင့်ပြုချက်တွေကို စစ်ဆေးပါ။ Organization ဆီ ပြောင်းရွှေ့ထားတာက မူရင်းပံ့ပိုးသူတွေရဲ့ Credit ကို အစားထိုးတာ မဟုတ်ပါဘူး။
 
 ## အသုံးပြုပုံ
 

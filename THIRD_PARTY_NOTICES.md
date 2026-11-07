@@ -2,7 +2,7 @@
 
 ## Application
 
-Git history credits [Sann Lynn Htun](https://github.com/sannlynnhtun-coding). Moving the repository to [Burma Project Ideas](https://github.com/burma-project-ideas/adhihtan) preserves that history. Organization ownership does not replace contributor credit.
+The original [Adhihtan Android app](https://play.google.com/store/apps/details?id=com.a_dhi_htan) was created by [Yan Naing Htin Kyaw](https://th.linkedin.com/in/yan-naing-htin-kyaw-5b6570256). [Sann Lynn Htun](https://github.com/sannlynnhtun-coding) recreated the app in Blazor WebAssembly, inspired by the original app’s flow. Credit for the original app belongs to Yan Naing Htin Kyaw; Git history in this repository records contributions to the Blazor recreation. No GitHub account is attributed to the original creator because one has not been identified. Moving the repository to [Burma Project Ideas](https://github.com/burma-project-ideas/adhihtan) preserves that history. Organization ownership does not replace contributor credit.
 
 ## Board UI reference
 
@@ -12,7 +12,7 @@ Git history credits [Sann Lynn Htun](https://github.com/sannlynnhtun-coding). Mo
 
 ## Recovered content and media
 
-`wwwroot/data/recovered-content.json` identifies Android package `com.a_dhi_htan`, app version 1.3.1, and Hermes bytecode version 96. The repository does not identify the original content author or a redistribution license. Original decompiled inputs are not included. Bundled image/audio ownership is not fully documented. Preserve provenance and resolve permission questions before redistributing these assets under a new license.
+`wwwroot/data/recovered-content.json` identifies Android package `com.a_dhi_htan`, app version 1.3.1, and Hermes bytecode version 96. The original app creator is credited above; authorship and redistribution rights for individual underlying texts and media are not established by the recovered metadata. Original decompiled inputs are not included. Bundled image/audio ownership is not fully documented. Preserve provenance and resolve permission questions before redistributing these assets under a new license.
 
 ## Myanmar encoding
 
