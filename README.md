@@ -1,57 +1,83 @@
+<p align="center"><img src="Adhihtan/wwwroot/assets/images/logo-orange.png" width="96" height="96" alt="အဓိဋ္ဌာန် App ၏ လိမ္မော်ရောင် Logo" /></p>
+
 # Adhihtan (အဓိဋ္ဌာန်)
 
-An offline-capable daily Buddhist practice planner and prayer-bead counter, built with .NET 10 Blazor WebAssembly for learners and contributors in [Burma Project Ideas](https://github.com/burma-project-ideas).
+နေ့စဉ် အဓိဋ္ဌာန်အစီအစဉ် ရွေးချယ်ပြီး ပုတီးစိပ်အရေအတွက်နဲ့ ပြီးစီးမှုမှတ်တမ်းတွေကို သိမ်းထားနိုင်တဲ့ .NET 10 Blazor WebAssembly Project ပါ။ [App ကို ဒီမှာ ဖွင့်နိုင်ပါတယ်](https://adhihtan.vercel.app/)။
 
-[Live app](https://adhihtan.vercel.app/) · [Repository](https://github.com/burma-project-ideas/adhihtan) · [Source credits](THIRD_PARTY_NOTICES.md)
+[Burma Project Ideas](https://github.com/burma-project-ideas) အောက်မှာ နောက်လာမယ့်သူတွေ လေ့လာနိုင်ဖို့၊ ကိုယ်နှစ်သက်တဲ့ Programming Language နဲ့ ပြန်ရေးကြည့်နိုင်ဖို့ ထားပေးထားတာပါ။ App က Browser ထဲမှာပဲ အလုပ်လုပ်ပြီး Account၊ Server Database နဲ့ Device တွေကြား Sync လုပ်တဲ့စနစ် မလိုအပ်ပါဘူး။
 
-## Contributors and sources
+## အဓိက ပံ့ပိုးသူများနှင့် မူရင်း Data
 
-| Contributor / source | Contribution |
+| ပံ့ပိုးသူ / ရင်းမြစ် | ပံ့ပိုးထားသည့်အပိုင်း |
 | --- | --- |
-| [Sann Lynn Htun (@sannlynnhtun-coding)](https://github.com/sannlynnhtun-coding) | Git-history contributor; Blazor application and interface implementation |
-| Original Android app `com.a_dhi_htan`, version 1.3.1 | Recovered practice content and schedules; original author and redistribution terms are not identified in the recovered metadata |
-| [Board UI](https://www.boardui.com/) | Visual reference for the floating sidebar, dashboard panels, buttons, and grouped settings |
-| Rabbit conversion rules (`rabbit-node` 1.0.4) | Unicode/Zawgyi conversion rules used by the generated converter |
+| [Sann Lynn Htun (@sannlynnhtun-coding)](https://github.com/sannlynnhtun-coding) | Git History အရ ပံ့ပိုးသူ၊ Blazor App နဲ့ UI ရေးသားမှု |
+| Android App `com.a_dhi_htan`၊ Version `1.3.1` | ပြန်လည်ထုတ်ယူထားတဲ့ အဓိဋ္ဌာန်အကြောင်းအရာနဲ့ အစီအစဉ်များ |
+| [Board UI](https://www.boardui.com/) | Floating Sidebar၊ Dashboard Panel၊ Button နဲ့ Settings Layout တို့အတွက် Design Reference |
+| Rabbit Conversion Rules (`rabbit-node` 1.0.4) | Unicode/Zawgyi ပြောင်းလဲဖော်ပြတဲ့ Generated Converter ရဲ့ Rules |
 
-The interface is an app-specific Blazor implementation inspired by Board UI. It does not install Board UI's React components or include its paid template source. See the notices for provenance and licensing limitations.
+မူရင်း Android App ရဲ့ Author နဲ့ Data ပြန်လည်ဖြန့်ဝေခွင့်ကို Recovered Metadata ထဲမှာ မဖော်ပြထားပါဘူး။ Image/Audio တွေရဲ့ Ownership အချက်အလက်လည်း မပြည့်စုံသေးပါဘူး။ ပြန်သုံးမယ်ဆိုရင် [Source Notices](THIRD_PARTY_NOTICES.md) ကို ဖတ်ပြီး သက်ဆိုင်ရာခွင့်ပြုချက်တွေကို စစ်ဆေးပါ။ Organization ဆီ ပြောင်းရွှေ့ထားတာက မူရင်းပံ့ပိုးသူတွေရဲ့ Credit ကို အစားထိုးတာ မဟုတ်ပါဘူး။
 
-## How it works
+## အသုံးပြုပုံ
 
-1. Open **Setup**, select a practice, level, chant, and counts per round. Custom daily practice accepts 1–108 rounds and 1–108 counts per round.
-2. Save the plan. **Counter** shows today's chant, current count, target, and progress. Tap to count; use Undo to reverse a count. Reset asks for confirmation when enabled.
-3. **Home** summarizes today's progress, totals, and recent activity. **Categories** lets you search practice names and descriptions and read instructions, benefits, and schedules.
-4. In **Settings**, choose Myanmar or English, counter style, feedback, screen wake lock, themes, contrast, and text encoding. Myanmar is the default. Preferences persist on this browser.
-5. Export a JSON backup to keep a separate copy of your plan, preferences, counts, and history. Restore accepts version-1 backup envelopes and replaces current state; keep a backup before restoring. The file picker accepts JSON files up to 5 MB.
+1. **စတင် (`/setup`)** မှာ အဓိဋ္ဌာန်အမျိုးအစား၊ အဆင့်၊ ဂုဏ်တော်နဲ့ တစ်ပတ်လျှင် ရေတွက်မယ့်အရေအတွက် ရွေးပါ။ စိတ်ကြိုက်အစီအစဉ်မှာ ပတ်အရေအတွက်နဲ့ တစ်ပတ်လျှင် ထိချက်ကို `1–108` အတွင်း ထည့်နိုင်ပါတယ်။
+2. **ပုတီး (`/counter`)** မှာ ထိနှိပ်ပြီး ရေတွက်ပါ။ **နောက်ပြန်** က တစ်ချက်လျှော့ပေးပြီး **ပြန်စ** က ယနေ့ရေတွက်မှုကို သုညပြန်ထားပါတယ်။ Confirmation ဖွင့်ထားရင် မပြန်စမီ မေးပါတယ်။
+3. **ပင်မ (`/`)** မှာ ယနေ့ Target၊ Progress၊ စုစုပေါင်းနဲ့ လတ်တလောမှတ်တမ်းတွေ ကြည့်နိုင်ပါတယ်။
+4. **အမျိုးအစား (`/categories`)** မှာ အမည်နဲ့ အကြောင်းအရာ ရှာနိုင်ပြီး Detail Page မှာ ပြုလုပ်နည်း၊ အကျိုးနဲ့ အစီအစဉ်တွေ ဖတ်နိုင်ပါတယ်။
+5. **ဆက်တင် (`/settings`)** မှာ EN/MM၊ Counter ပုံစံ၊ အသံ/တုန်ခါမှု၊ Screen Awake၊ Theme၊ Contrast နဲ့ Unicode/Zawgyi ကို ရွေးနိုင်ပါတယ်။ Default Language က **မြန်မာ (MM)** ဖြစ်ပြီး ရွေးချယ်မှုတွေကို ဒီ Browser ထဲမှာ သိမ်းထားပါတယ်။
+6. **ဒေတာမိတ္တူ ထုတ်မည်** နဲ့ JSON Backup သိမ်းနိုင်ပြီး **ဒေတာမိတ္တူ ပြန်သွင်းမည်** နဲ့ Restore လုပ်နိုင်ပါတယ်။ Restore က လက်ရှိ State ကို အစားထိုးတဲ့အတွက် အရင် Backup ယူထားပါ။ JSON ဖိုင်ကို အများဆုံး `5 MB` အထိ လက်ခံပါတယ်။
 
-Inputs are practice selections, counting actions, settings, searches, and optional backup files. Outputs are a saved schedule, daily counts and completion history, shareable progress text, and downloadable JSON backups. Processing and persistence run in the browser with IndexedDB; no application account or server database is required.
+## App ရဲ့ Workflow
 
-## Features and limitations
+### ၁။ Content နဲ့ သိမ်းထားတဲ့ State ကို ဖတ်မယ်
 
-- Five practice categories, including a custom daily plan, and 13 counter styles.
-- Light/dark and high-contrast modes, orange branding, keyboard focus states, native form controls, and reduced-motion support.
-- English interface labels, dates, and numbers. Prayer names, source instructions, and some generated messages remain Burmese; this is not a complete translation of religious content.
-- Release builds cache application assets for offline use after a successful initial online visit. Development service workers are network-only. Offline installation depends on browser storage and successful asset caching.
-- Clearing site data or changing browsers/devices loses local state unless you exported a backup. There is no cross-device synchronization.
-- Sound, vibration, sharing, clipboard, and wake lock depend on browser/device support and permissions.
-- Restore checks the envelope and normalizes preferences; it is not a comprehensive validator of every nested schedule field. Import only backups you trust.
-- Generated content and bundled media have incomplete upstream ownership metadata. This repository does not claim ownership or grant an additional license over them.
+`Program.cs` က Blazor App နဲ့ Services တွေကို Register လုပ်ပါတယ်။ `MainLayout.razor` က `AppStateService.InitializeAsync()` ကို ခေါ်ပြီး `wwwroot/data/recovered-content.json` ထဲက Content နဲ့ Browser ရဲ့ IndexedDB ထဲက State ကို ဖတ်ပါတယ်။ သိမ်းထားတဲ့ State မရှိရင် Default Settings နဲ့ စတင်ပါတယ်။
 
-## Project structure
+### ၂။ အစီအစဉ်ကို ပြင်ဆင်မယ်
 
-| Path | Purpose |
+`Setup.razor` က ရွေးထားတဲ့ Input ကို `ConfigurePlanAsync()` ဆီ ပို့ပါတယ်။ ရှိပြီးသားအစီအစဉ်အတွက် ရွေးထားတဲ့ ဂုဏ်တော်ရဲ့ နေ့အမှတ်ကို အခြေခံပြီး ယနေ့နဲ့ကိုက်အောင် ရက်စွဲတွေ သတ်မှတ်ပါတယ်။ စိတ်ကြိုက်အစီအစဉ်အတွက် ယနေ့ Entry တစ်ခု ဖန်တီးပါတယ်။
+
+Plan အသစ်သိမ်းတဲ့အခါ ယနေ့ရေတွက်မှုကို သုညပြန်ထားပြီး ယနေ့ Completion History ကို ဖယ်ပါတယ်။ အခြားနေ့တွေရဲ့ မှတ်တမ်းကို ဆက်ထားပါတယ်။
+
+### ၃။ ရေတွက်ပြီး Target နဲ့ နှိုင်းယှဉ်မယ်
+
+`CounterFace.razor` က ထိနှိပ်မှုကို လက်ခံပြီး `IncrementAsync()` ကို ခေါ်ပါတယ်။ ယနေ့ Target က **ပတ်အရေအတွက် × တစ်ပတ်လျှင် ထိချက်** ဖြစ်ပါတယ်။ Target ပြည့်ရင် Entry ကို ပြီးစီးကြောင်း သတ်မှတ်ပြီး History သိမ်းပါတယ်။ ပြည့်ပြီးသား Target ထက် ဆက်မတိုးပါဘူး။
+
+`UndoAsync()` က တစ်ချက်လျှော့ပြီး ယနေ့ Completion ကို ပြန်ဖယ်ပါတယ်။ `ResetTodayAsync()` က ယနေ့ Count ကို သုညပြန်ထားပါတယ်။ ပြောင်းလဲမှုတွေကို IndexedDB ထဲ သိမ်းပြီး UI ကို Update လုပ်ပါတယ်။
+
+### ၄။ ရလဒ်ပြပြီး Backup ထုတ်မယ်
+
+Home က Count၊ Target နဲ့ History ကို ပြပါတယ်။ Share က ယနေ့ Category၊ ဂုဏ်တော်နဲ့ Progress Text ကို Browser Share API သို့မဟုတ် Clipboard နဲ့ မျှဝေပေးပါတယ်။ Export က Plan၊ Settings၊ Counts နဲ့ History ပါတဲ့ Version-1 JSON Backup ကို Download လုပ်ပေးပါတယ်။ Restore က Backup Envelope ကို စစ်ပြီး Settings ကို Normalize လုပ်ကာ State ပြန်သွင်းပါတယ်။
+
+```mermaid
+flowchart TD
+    Open["App ဖွင့်မယ်"] --> Load["Content နဲ့ IndexedDB State ဖတ်မယ်"]
+    Load --> Setup["အဓိဋ္ဌာန်နဲ့ Target ရွေးမယ်"]
+    Setup --> Count["ပုတီးစိပ် ရေတွက်မယ်"]
+    Count --> Save["Count နဲ့ Progress သိမ်းမယ်"]
+    Save --> Goal{"Target ပြည့်ပြီလား"}
+    Goal -->|မပြည့်သေး| Count
+    Goal -->|ပြည့်ပြီ| History["ပြီးစီးမှုမှတ်တမ်း သိမ်းမယ်"]
+    Save --> Backup["လိုအပ်ရင် JSON Backup ထုတ်မယ်"]
+    History --> Backup
+```
+
+## Project ဖွဲ့စည်းပုံ
+
+| နေရာ | တာဝန် |
 | --- | --- |
-| `Adhihtan/Pages/` | Home, setup, counter, category list/detail, settings, and not-found routes |
-| `Adhihtan/Components/`, `Layout/` | Shared counter, navigation, toggles, icons, and app shell |
-| `Adhihtan/Services/` | State, persistence/JS interop, translation labels, and Burmese date formatting |
-| `Adhihtan/Models/` | Persisted preferences, plans, backup envelope, and content models |
-| `Adhihtan/wwwroot/` | Styles, images/audio, recovered JSON, browser APIs, and PWA files |
-| `scripts/` | Vercel SDK installation and Release publish scripts |
-| `tools/` | Content and converter recovery utilities; original decompiled input is not bundled |
-| `vercel.json` | Build commands, static output, SPA rewrites, and cache headers |
+| `Adhihtan/Pages/` | Home၊ Setup၊ Counter၊ Categories၊ Detail၊ Settings နဲ့ Not Found Routes |
+| `Adhihtan/Components/` | Counter၊ Navigation၊ Toggle နဲ့ Icon များ |
+| `Adhihtan/Layout/` | App Shell၊ Theme နဲ့ Navigation ချိတ်ဆက်မှု |
+| `Adhihtan/Services/` | State၊ IndexedDB/Browser Interop၊ EN/MM Label နဲ့ Date Formatting |
+| `Adhihtan/Models/` | Settings၊ Plan၊ Content နဲ့ Backup Model များ |
+| `Adhihtan/wwwroot/` | CSS၊ Image/Audio၊ JSON Content၊ JavaScript နဲ့ PWA ဖိုင်များ |
+| `scripts/` | Vercel အတွက် SDK Installation နဲ့ Release Publish |
+| `tools/` | Content နဲ့ Font Converter ပြန်လည်ထုတ်ယူတဲ့ Maintenance Tools |
+| `vercel.json` | Build၊ Static Output၊ SPA Rewrite နဲ့ Cache Headers |
 
-## Local setup
+## Local မှာ Run မယ်
 
-Install the .NET 10 SDK, then:
+ပုံမှန် App Run ဖို့ **.NET 10 SDK** လိုပါတယ်။ React Runtime၊ Node.js နဲ့ CSS Build Step မလိုပါဘူး။
 
 ```powershell
 git clone https://github.com/burma-project-ideas/adhihtan.git
@@ -60,31 +86,41 @@ dotnet restore
 dotnet run --project .\Adhihtan\Adhihtan.csproj
 ```
 
-Open the URL printed by the development server. The existing checkout may still be named `blazor-adhihtan`; the directory name does not affect the app.
+Terminal မှာ ပြထားတဲ့ URL ကို Browser နဲ့ ဖွင့်ပါ။ ရှိပြီးသား Local Folder က `blazor-adhihtan` ဆိုတဲ့အမည်နဲ့ ရှိနေလည်း Run လို့ရပါတယ်။
 
-## Build and deployment
+## Build နဲ့ Deployment
 
 ```powershell
 dotnet build .\Adhihtan.sln
 dotnet publish .\Adhihtan\Adhihtan.csproj -c Release -o .\artifacts\publish
 ```
 
-Serve `artifacts/publish/wwwroot` over HTTPS with fallback to `index.html` for client routes such as `/setup` and `/settings`. Test the published build to verify PWA/offline behavior.
+Static Output က `artifacts/publish/wwwroot` ဖြစ်ပါတယ်။ HTTPS နဲ့ Host လုပ်ပြီး `/setup`၊ `/settings` တို့ကို တိုက်ရိုက်ဖွင့်နိုင်အောင် `index.html` ဆီ SPA Fallback သတ်မှတ်ပေးဖို့ လိုပါတယ်။
 
-Vercel uses `scripts/vercel-install.sh` to install .NET 10 and `scripts/vercel-build.sh` to publish into `artifacts/vercel/wwwroot`. `vercel.json` configures SPA routing and service-worker cache revalidation. After transferring the GitHub repository, verify the Vercel project's Git integration points to `burma-project-ideas/adhihtan` and that the Vercel GitHub App can access the organization. Existing production hosting alone does not prove future Git-triggered deployments are connected.
+Vercel မှာ `vercel.json` က `scripts/vercel-install.sh` နဲ့ .NET 10 SDK ကို Install လုပ်ပြီး `scripts/vercel-build.sh` နဲ့ `artifacts/vercel/wwwroot` ဆီ Publish လုပ်ပါတယ်။ Repository က [burma-project-ideas/adhihtan](https://github.com/burma-project-ideas/adhihtan) ဖြစ်ပြီး Public App က [adhihtan.vercel.app](https://adhihtan.vercel.app/) ပါ။ Transfer ပြီးနောက် Git-triggered Deployment အောင်မြင်ထားပါတယ်။ နောက်ပိုင်း Git Integration ပြင်တဲ့အခါ Vercel GitHub App ရဲ့ Organization Access ကို စစ်ပါ။ Individual Deployment URL တွေမှာ Vercel Sign-in လိုနိုင်ပါတယ်။
 
-The public live URL is https://adhihtan.vercel.app/. Individual immutable deployment URLs may require Vercel authentication.
+Release Service Worker က App Assets တွေကို Cache လုပ်ပြီး ပထမဆုံး Online Visit နဲ့ Cache Installation အောင်မြင်ပြီးနောက် Offline အသုံးပြုနိုင်အောင် ပြင်ဆင်ပေးပါတယ်။ Development Service Worker က Network-only ဖြစ်လို့ Offline စမ်းချင်ရင် Published Release Build ကို သုံးပါ။
 
-## Contributing and verification
+## Data ကို လေ့လာချင်ရင်
 
-Read `Adhihtan/AGENTS.md` first. Keep the standalone Blazor framework and offline core flows. Do not introduce server dependencies or copy paid design-system source without the appropriate license.
-
-Build before submitting. Check plan setup, count/undo/reset, language persistence, category search and tabs, backup/restore, and direct route loading. Check narrow/mobile and desktop layouts, keyboard focus, light/dark/high-contrast themes, and reduced motion. A successful build is not a substitute for device and offline testing.
-
-The recovery utilities require Node.js and an original decompiled JavaScript input, for example:
+`Adhihtan/wwwroot/data/recovered-content.json` ထဲမှာ Category နဲ့ Schedule Data တွေ ရှိပါတယ်။ Recovery Tools တွေက ပုံမှန် App အသုံးပြုဖို့ မလိုပါဘူး။ ပြန်ထုတ်ချင်ရင် **Node.js** နဲ့ မူရင်း Decompiled JavaScript Input လိုပါတယ်။ အဲ့ဒီ Input ကို Repository ထဲမှာ မထည့်ထားပါဘူး။
 
 ```powershell
 node tools/recover-hermes-data.mjs <decompiled.js> <output.json>
 ```
 
-They are maintenance tools, not part of the normal user workflow. Only run recovery on source you have permission to use.
+ကိုယ်အသုံးပြုခွင့်ရှိတဲ့ Source ကိုပဲ Recovery လုပ်ပါ။ Data နဲ့ Media ကို License အသစ်တပ်ပြီး ပြန်ဖြန့်ဝေခွင့် ရှိတယ်လို့ ဒီ Repository က အာမမခံပါဘူး။
+
+## လက်ရှိ ကန့်သတ်ချက်များ
+
+- Practice Category ၅ မျိုးနဲ့ Counter ပုံစံ ၁၃ မျိုး ပါပါတယ်။ EN/MM က Interface Label၊ Date နဲ့ Number တွေအတွက် ဖြစ်ပြီး ဂုဏ်တော်၊ မူရင်း Instructions နဲ့ Generated Message အချို့က မြန်မာလိုပဲ ရှိပါတယ်။
+- Browser Data ရှင်းလိုက်ရင်၊ Browser/Device ပြောင်းလိုက်ရင် Backup မရှိဘဲ State ပြန်မရနိုင်ပါဘူး။ Device တွေကြား Sync မရှိပါဘူး။
+- Offline Cache အတွက် Storage နဲ့ Asset Download အောင်မြင်မှု လိုပါတယ်။ Sound၊ Vibration၊ Share၊ Clipboard နဲ့ Screen Awake က Browser/Device Support နဲ့ Permission အပေါ် မူတည်ပါတယ်။
+- Restore က Version နဲ့ Envelope ကို စစ်ပေမယ့် Nested Schedule Field အားလုံးကို အသေးစိတ် Validate မလုပ်ပါဘူး။ ယုံကြည်ရတဲ့ Backup ကိုပဲ ပြန်သွင်းပါ။
+- မူရင်း Content၊ Image/Audio နဲ့ Rabbit Rules တို့ရဲ့ License Metadata မပြည့်စုံသေးပါဘူး။ [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) မှာ လက်ရှိသိထားတဲ့ Provenance ကို ဖော်ပြထားပါတယ်။
+
+## UI Design နဲ့ ပါဝင်ပံ့ပိုးခြင်း
+
+[Board UI](https://www.boardui.com/) ရဲ့ Dashboard Style ကို Reference ယူပြီး လိမ္မော်ရောင် Theme နဲ့ Blazor/CSS အတွက် ရေးထားပါတယ်။ Board UI React Components သို့မဟုတ် Paid Template Source ကို ထည့်သွင်းထားတာ မဟုတ်ပါဘူး။ Counter၊ Progress Ring နဲ့ Settings Controls တွေက ဒီ App အတွက် သီးသန့်ရေးထားတာပါ။ Mobile Layout၊ Light/Dark၊ High Contrast၊ Keyboard Focus နဲ့ Reduced Motion ကို ပံ့ပိုးထားပါတယ်။
+
+ပြင်ဆင်မယ်ဆိုရင် `Adhihtan/AGENTS.md` ကို အရင်ဖတ်ပါ။ Standalone Blazor Framework နဲ့ Offline Core Flows ကို ထိန်းထားပြီး Server-only Dependency မထည့်ပါနဲ့။ Build အပြင် Setup၊ Count/Undo/Reset၊ Language Persistence၊ Category Search/Tab၊ Backup/Restore နဲ့ Direct Route Access တွေကိုလည်း စမ်းပါ။ Desktop/Mobile၊ Keyboard၊ Theme နဲ့ Reduced Motion ကို စစ်ပြီးမှ Change တင်ပါ။ Build အောင်မြင်တာတစ်ခုတည်းက Device နဲ့ Offline Test တွေကို အစားမထိုးနိုင်ပါဘူး။
